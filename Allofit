@@ -1,0 +1,92 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+
+	int singleRoom = 60;
+	int doubleRoom = 75;
+	int kingRoom = 100;
+	int suiteRoom = 150;
+
+	int occupied_SINGLE = 0;
+	int occupied_DOUBLE = 0;
+	int occupied_KING = 0;
+	int occupied_SUITE = 0;
+
+	int floor = 0;
+	int room = 0;
+
+	string location;
+
+	const int MIN_floor = 1;
+	const int MAX_floor = 5;
+	const int MIN_room = 1;
+	const int MAX_room = 30;
+
+	cout << "Enter the location of this hotel chain: ";
+	cin >> location;
+
+	cout << "Enter total number of floors of the hotel: ";
+	cin >> floor;
+
+	while (floor < 1 || floor > 5) {
+
+		cout << "Please enter a number between 1 and 5 !! Please try again.";
+		cin >> floor;
+
+	}
+
+	for (int i = 1; i <= floor; i++) {
+
+		occupied_SINGLE = 0;
+		occupied_DOUBLE = 0;
+		occupied_KING = 0;
+		occupied_SUITE = 0;
+
+
+		cout << "Enter total number of rooms in the  " << i << "th Floor: ";
+		cin >> room;
+
+		while (room < MIN_room || room > MAX_room) {
+
+			cout << "number of rooms should be between 1 and 30 !! Please try again.";
+			cin >> room;
+		}
+
+		cout << "How many SINGLE rooms are occupied in the " << i << " floor: ";
+		cin >> occupied_SINGLE;
+		cout << "How many DOUBLE rooms are occupied in the " << i << " floor: ";
+		cin >> occupied_DOUBLE;
+		cout << "How many KING rooms are occupied in the " << i << " floor:";
+		cin >> occupied_KING;
+		cout << "How many SUITES are occupied in the " << i << " floor:";
+		cin >> occupied_SUITE;
+
+		int occupied_Total = 0;
+
+		do {
+
+			
+			// remember to put an I or something to represent what floor its on
+			cout << "How many SINGLE rooms are occupied in the " << i << " floor: ";
+			cin >> occupied_SINGLE;
+			cout << "How many DOUBLE rooms are occupied in the " << i << " floor: ";
+			cin >> occupied_DOUBLE;
+			cout << "How many KING rooms are occupied in the " << i << " floor:";
+			cin >> occupied_KING;
+			cout << "How many SUITES are occupied in the " << i << " floor:";
+			cin >> occupied_SUITE;
+
+			occupied_Total = occupied_SINGLE + occupied_DOUBLE + occupied_KING + occupied_SUITE;
+			
+			if (occupied_Total < 0 || occupied_Total > room) {
+				cout << "The total number of occupied rooms cannot be greater than the number of rooms. Please try again." << endl;
+
+		} 
+
+		} while (occupied_Total > room);
+		
+	}
+}
+
